@@ -9,16 +9,20 @@ import { Container } from '../../../base/react';
 import { connect } from '../../../base/redux';
 import { StyleType } from '../../../base/styles';
 import { ChatButton } from '../../../chat';
-import { InviteButton } from '../../../invite';
+import { InfoDialogButton } from '../../../invite';
 
 import { isToolboxVisible } from '../../functions';
 
 import AudioMuteButton from '../AudioMuteButton';
 import HangupButton from '../HangupButton';
+import { TileViewButton } from '../../../video-layout';
 
 import OverflowMenuButton from './OverflowMenuButton';
 import styles from './styles';
-import VideoMuteButton from '../VideoMuteButton';
+
+// import VideoMuteButton from '../VideoMuteButton';
+
+import ToggleCameraButton from '../../components/native/ToggleCameraButton';
 
 /**
  * The type of {@link Toolbox}'s React {@code Component} props.
@@ -122,18 +126,25 @@ class Toolbox extends PureComponent<Props> {
                 }
                 {
                     !_chatEnabled
-                        && <InviteButton
+                        && <InfoDialogButton
                             styles = { buttonStyles }
                             toggledStyles = { toggledButtonStyles } />
                 }
+
+                <ToggleCameraButton styles = { buttonStyles } />
+
                 <AudioMuteButton
                     styles = { buttonStyles }
                     toggledStyles = { toggledButtonStyles } />
                 <HangupButton
                     styles = { hangupButtonStyles } />
-                <VideoMuteButton
+                <TileViewButton
                     styles = { buttonStyles }
                     toggledStyles = { toggledButtonStyles } />
+
+                {/* <VideoMuteButton
+                    styles = { buttonStyles }
+                    toggledStyles = { toggledButtonStyles } />*/}
                 <OverflowMenuButton
                     styles = { buttonStylesBorderless }
                     toggledStyles = { toggledButtonStyles } />
